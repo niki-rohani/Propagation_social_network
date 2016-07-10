@@ -1,0 +1,10 @@
+original :
+992 traces
+110 POI
+train / test : 892 / 100
+
+
+3+ :
+606 traces
+110 POI
+train / test : 546 / 60
