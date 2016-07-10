@@ -1,0 +1,1167 @@
+	.version 1.4
+	.target sm_10, map_f64_to_f32
+	// compiled with /usr/lib/nvidia-cuda-toolkit/lib//be
+	// nvopencc 4.1 built on 2012-04-05
+
+	//-----------------------------------------------------------
+	// Compiling /tmp/tmpxft_000057dc_00000000-9_Kernels_nmlp.cpp3.i (/tmp/ccBI#.XLf8rP)
+	//-----------------------------------------------------------
+
+	//-----------------------------------------------------------
+	// Options:
+	//-----------------------------------------------------------
+	//  Target:ptx, ISA:sm_10, Endian:little, Pointer Size:64
+	//  -O3	(Optimization level)
+	//  -g0	(Debug level)
+	//  -m2	(Report advisories)
+	//-----------------------------------------------------------
+
+	.file	1	"<command-line>"
+	.file	2	"/tmp/tmpxft_000057dc_00000000-8_Kernels_nmlp.cudafe2.gpu"
+	.file	3	"/usr/lib/gcc/x86_64-linux-gnu/4.6/include/stddef.h"
+	.file	4	"/usr/include/crt/device_runtime.h"
+	.file	5	"/usr/include/host_defines.h"
+	.file	6	"/usr/include/builtin_types.h"
+	.file	7	"/usr/include/device_types.h"
+	.file	8	"/usr/include/driver_types.h"
+	.file	9	"/usr/include/surface_types.h"
+	.file	10	"/usr/include/texture_types.h"
+	.file	11	"/usr/include/vector_types.h"
+	.file	12	"/usr/include/device_launch_parameters.h"
+	.file	13	"/usr/include/crt/storage_class.h"
+	.file	14	"Kernels_nmlp.cu"
+	.file	15	"/usr/include/common_functions.h"
+	.file	16	"/usr/include/math_functions.h"
+	.file	17	"/usr/include/math_constants.h"
+	.file	18	"/usr/include/device_functions.h"
+	.file	19	"/usr/include/sm_11_atomic_functions.h"
+	.file	20	"/usr/include/sm_12_atomic_functions.h"
+	.file	21	"/usr/include/sm_13_double_functions.h"
+	.file	22	"/usr/include/sm_20_atomic_functions.h"
+	.file	23	"/usr/include/sm_20_intrinsics.h"
+	.file	24	"/usr/include/sm_30_intrinsics.h"
+	.file	25	"/usr/include/surface_functions.h"
+	.file	26	"/usr/include/texture_fetch_functions.h"
+	.file	27	"/usr/include/math_functions_dbl_ptx1.h"
+
+
+	.entry _Z14functionShrinkPKfPfi (
+		.param .u64 __cudaparm__Z14functionShrinkPKfPfi_A,
+		.param .u64 __cudaparm__Z14functionShrinkPKfPfi_B,
+		.param .s32 __cudaparm__Z14functionShrinkPKfPfi_N)
+	{
+	.reg .u16 %rh<3>;
+	.reg .u32 %r<6>;
+	.reg .u64 %rd<10>;
+	.reg .f32 %f<7>;
+	.reg .pred %p<5>;
+	.loc	14	6	0
+$LDWbegin__Z14functionShrinkPKfPfi:
+	mov.u16 	%rh1, %ctaid.x;
+	mul.wide.u16 	%r1, %rh1, 1024;
+	cvt.u32.u16 	%r2, %tid.x;
+	add.u32 	%r3, %r2, %r1;
+	ld.param.s32 	%r4, [__cudaparm__Z14functionShrinkPKfPfi_N];
+	setp.le.s32 	%p1, %r4, %r3;
+	@%p1 bra 	$Lt_0_2818;
+	.loc	14	11	0
+	cvt.s64.s32 	%rd1, %r3;
+	mul.wide.s32 	%rd2, %r3, 4;
+	ld.param.u64 	%rd3, [__cudaparm__Z14functionShrinkPKfPfi_A];
+	add.u64 	%rd4, %rd3, %rd2;
+	ld.global.f32 	%f1, [%rd4+0];
+	mov.f32 	%f2, 0fbf800000;     	// -1
+	setp.ge.f32 	%p2, %f1, %f2;
+	@!%p2 bra 	$Lt_0_3330;
+	mov.f32 	%f3, 0f3f800000;     	// 1
+	setp.le.f32 	%p3, %f1, %f3;
+	@!%p3 bra 	$L_0_2306;
+	mov.f32 	%f4, 0f00000000;     	// 0
+	ld.param.u64 	%rd5, [__cudaparm__Z14functionShrinkPKfPfi_B];
+	add.u64 	%rd6, %rd5, %rd2;
+	st.global.f32 	[%rd6+0], %f4;
+	bra.uni 	$L_0_2050;
+$Lt_0_3330:
+$L_0_2306:
+	.loc	14	12	0
+	mov.f32 	%f5, 0f3f800000;     	// 1
+	ld.param.u64 	%rd7, [__cudaparm__Z14functionShrinkPKfPfi_B];
+	add.u64 	%rd8, %rd7, %rd2;
+	st.global.f32 	[%rd8+0], %f5;
+$L_0_2050:
+$Lt_0_2818:
+	.loc	14	14	0
+	exit;
+$LDWend__Z14functionShrinkPKfPfi:
+	} // _Z14functionShrinkPKfPfi
+
+	.entry _Z15functionDShrinkPKfPfi (
+		.param .u64 __cudaparm__Z15functionDShrinkPKfPfi_A,
+		.param .u64 __cudaparm__Z15functionDShrinkPKfPfi_B,
+		.param .s32 __cudaparm__Z15functionDShrinkPKfPfi_N)
+	{
+	.reg .u16 %rh<3>;
+	.reg .u32 %r<6>;
+	.reg .u64 %rd<8>;
+	.reg .f32 %f<6>;
+	.reg .pred %p<5>;
+	.loc	14	16	0
+$LDWbegin__Z15functionDShrinkPKfPfi:
+	mov.u16 	%rh1, %ctaid.x;
+	mul.wide.u16 	%r1, %rh1, 1024;
+	cvt.u32.u16 	%r2, %tid.x;
+	add.u32 	%r3, %r2, %r1;
+	ld.param.s32 	%r4, [__cudaparm__Z15functionDShrinkPKfPfi_N];
+	setp.le.s32 	%p1, %r4, %r3;
+	@%p1 bra 	$Lt_1_3074;
+	.loc	14	21	0
+	cvt.s64.s32 	%rd1, %r3;
+	mul.wide.s32 	%rd2, %r3, 4;
+	ld.param.u64 	%rd3, [__cudaparm__Z15functionDShrinkPKfPfi_A];
+	add.u64 	%rd4, %rd3, %rd2;
+	ld.global.f32 	%f1, [%rd4+0];
+	mov.f32 	%f2, 0fbf800000;     	// -1
+	setp.ge.f32 	%p2, %f1, %f2;
+	@!%p2 bra 	$Lt_1_3074;
+	mov.f32 	%f3, 0f3f800000;     	// 1
+	setp.le.f32 	%p3, %f1, %f3;
+	@!%p3 bra 	$Lt_1_3074;
+	mov.f32 	%f4, 0f00000000;     	// 0
+	ld.param.u64 	%rd5, [__cudaparm__Z15functionDShrinkPKfPfi_B];
+	add.u64 	%rd6, %rd5, %rd2;
+	st.global.f32 	[%rd6+0], %f4;
+$Lt_1_3074:
+$L_1_2050:
+$Lt_1_2562:
+	.loc	14	23	0
+	exit;
+$LDWend__Z15functionDShrinkPKfPfi:
+	} // _Z15functionDShrinkPKfPfi
+
+	.entry _Z15functionPShrinkPKfPfi (
+		.param .u64 __cudaparm__Z15functionPShrinkPKfPfi_A,
+		.param .u64 __cudaparm__Z15functionPShrinkPKfPfi_B,
+		.param .s32 __cudaparm__Z15functionPShrinkPKfPfi_N)
+	{
+	.reg .u16 %rh<3>;
+	.reg .u32 %r<6>;
+	.reg .u64 %rd<8>;
+	.reg .f32 %f<5>;
+	.reg .pred %p<4>;
+	.loc	14	25	0
+$LDWbegin__Z15functionPShrinkPKfPfi:
+	mov.u16 	%rh1, %ctaid.x;
+	mul.wide.u16 	%r1, %rh1, 1024;
+	cvt.u32.u16 	%r2, %tid.x;
+	add.u32 	%r3, %r2, %r1;
+	ld.param.s32 	%r4, [__cudaparm__Z15functionPShrinkPKfPfi_N];
+	setp.le.s32 	%p1, %r4, %r3;
+	@%p1 bra 	$Lt_2_1794;
+	cvt.s64.s32 	%rd1, %r3;
+	mul.wide.s32 	%rd2, %r3, 4;
+	ld.param.u64 	%rd3, [__cudaparm__Z15functionPShrinkPKfPfi_A];
+	add.u64 	%rd4, %rd3, %rd2;
+	ld.param.u64 	%rd5, [__cudaparm__Z15functionPShrinkPKfPfi_B];
+	add.u64 	%rd6, %rd5, %rd2;
+	ld.global.f32 	%f1, [%rd4+0];
+	mov.f32 	%f2, 0f00000000;     	// 0
+	setp.lt.f32 	%p2, %f1, %f2;
+	@!%p2 bra 	$Lt_2_2562;
+	.loc	14	30	0
+	mov.f32 	%f3, 0f00000000;     	// 0
+	st.global.f32 	[%rd6+0], %f3;
+	bra.uni 	$Lt_2_2306;
+$Lt_2_2562:
+	.loc	14	31	0
+	st.global.f32 	[%rd6+0], %f1;
+$Lt_2_2306:
+$Lt_2_1794:
+	.loc	14	33	0
+	exit;
+$LDWend__Z15functionPShrinkPKfPfi:
+	} // _Z15functionPShrinkPKfPfi
+
+	.entry _Z16functionDPShrinkPKfPfi (
+		.param .u64 __cudaparm__Z16functionDPShrinkPKfPfi_A,
+		.param .u64 __cudaparm__Z16functionDPShrinkPKfPfi_B,
+		.param .s32 __cudaparm__Z16functionDPShrinkPKfPfi_N)
+	{
+	.reg .u16 %rh<3>;
+	.reg .u32 %r<6>;
+	.reg .u64 %rd<8>;
+	.reg .f32 %f<5>;
+	.reg .pred %p<4>;
+	.loc	14	35	0
+$LDWbegin__Z16functionDPShrinkPKfPfi:
+	mov.u16 	%rh1, %ctaid.x;
+	mul.wide.u16 	%r1, %rh1, 1024;
+	cvt.u32.u16 	%r2, %tid.x;
+	add.u32 	%r3, %r2, %r1;
+	ld.param.s32 	%r4, [__cudaparm__Z16functionDPShrinkPKfPfi_N];
+	setp.le.s32 	%p1, %r4, %r3;
+	@%p1 bra 	$Lt_3_1794;
+	cvt.s64.s32 	%rd1, %r3;
+	mul.wide.s32 	%rd2, %r3, 4;
+	ld.param.u64 	%rd3, [__cudaparm__Z16functionDPShrinkPKfPfi_A];
+	add.u64 	%rd4, %rd3, %rd2;
+	ld.global.f32 	%f1, [%rd4+0];
+	mov.f32 	%f2, 0f00000000;     	// 0
+	setp.lt.f32 	%p2, %f1, %f2;
+	@!%p2 bra 	$Lt_3_2306;
+	.loc	14	40	0
+	mov.f32 	%f3, 0f00000000;     	// 0
+	ld.param.u64 	%rd5, [__cudaparm__Z16functionDPShrinkPKfPfi_B];
+	add.u64 	%rd6, %rd5, %rd2;
+	st.global.f32 	[%rd6+0], %f3;
+$Lt_3_2306:
+$Lt_3_1794:
+	.loc	14	42	0
+	exit;
+$LDWend__Z16functionDPShrinkPKfPfi:
+	} // _Z16functionDPShrinkPKfPfi
+
+	.entry _Z19functionAdaptedTanHPKfPfi (
+		.param .u64 __cudaparm__Z19functionAdaptedTanHPKfPfi_A,
+		.param .u64 __cudaparm__Z19functionAdaptedTanHPKfPfi_B,
+		.param .s32 __cudaparm__Z19functionAdaptedTanHPKfPfi_N)
+	{
+	.reg .u16 %rh<3>;
+	.reg .u32 %r<10>;
+	.reg .u64 %rd<8>;
+	.reg .f32 %f<71>;
+	.reg .f64 %fd<9>;
+	.reg .pred %p<6>;
+	.loc	14	45	0
+$LDWbegin__Z19functionAdaptedTanHPKfPfi:
+	mov.u16 	%rh1, %ctaid.x;
+	mul.wide.u16 	%r1, %rh1, 1024;
+	cvt.u32.u16 	%r2, %tid.x;
+	add.u32 	%r3, %r2, %r1;
+	ld.param.s32 	%r4, [__cudaparm__Z19functionAdaptedTanHPKfPfi_N];
+	setp.le.s32 	%p1, %r4, %r3;
+	@%p1 bra 	$Lt_4_3330;
+	.loc	14	48	0
+	cvt.s64.s32 	%rd1, %r3;
+	mul.wide.s32 	%rd2, %r3, 4;
+	ld.param.u64 	%rd3, [__cudaparm__Z19functionAdaptedTanHPKfPfi_A];
+	add.u64 	%rd4, %rd3, %rd2;
+	ld.global.f32 	%f1, [%rd4+0];
+	cvt.f64.f32 	%fd1, %f1;
+	mov.f64 	%fd2, 0d3fe554c985f06f69;	// 0.6666
+	mul.f64 	%fd3, %fd1, %fd2;
+	.loc	27	253	0
+	abs.f64 	%fd4, %fd3;
+	cvt.rn.f32.f64 	%f2, %fd3;
+	cvt.rn.f32.f64 	%f3, %fd4;
+	mov.f32 	%f4, 0f3f0ccccd;     	// 0.55
+	setp.ge.f32 	%p2, %f3, %f4;
+	@!%p2 bra 	$Lt_4_4098;
+	.loc	16	3138	0
+	add.f32 	%f5, %f3, %f3;
+	mov.f32 	%f6, 0f3fb8aa3b;     	// 1.4427
+	mul.f32 	%f7, %f5, %f6;
+	cvt.rzi.f32.f32 	%f8, %f7;
+	mov.f32 	%f9, %f8;
+	mov.f32 	%f10, 0fbf317200;    	// -0.693146
+	mov.f32 	%f11, %f10;
+	mov.f32 	%f12, %f5;
+	mad.f32 %f13, %f9, %f11, %f12;
+	mov.f32 	%f14, %f13;
+	mov.f32 	%f15, %f8;
+	mov.f32 	%f16, 0fb5bfbe8e;    	// -1.42861e-06
+	mov.f32 	%f17, %f16;
+	mov.f32 	%f18, %f14;
+	mad.f32 %f19, %f15, %f17, %f18;
+	mov.f32 	%f20, %f19;
+	mov.f32 	%f21, 0f3fb8aa3b;    	// 1.4427
+	mul.f32 	%f22, %f20, %f21;
+	ex2.approx.f32 	%f23, %f22;
+	mov.f32 	%f24, %f23;
+	ex2.approx.f32 	%f25, %f8;
+	mov.f32 	%f26, %f25;
+	mov.f32 	%f27, 0f3f800000;    	// 1
+	mov.f32 	%f28, %f27;
+	mad.f32 %f29, %f24, %f26, %f28;
+	mov.f32 	%f30, %f29;
+	.loc	16	3146	0
+	mov.f32 	%f31, %f30;
+	rcp.approx.ftz.f32 %f32,%f31;
+	mov.f32 	%f33, %f32;
+	.loc	16	3138	0
+	mov.f32 	%f34, %f33;
+	mov.f32 	%f35, 0fc0000000;    	// -2
+	mov.f32 	%f36, %f35;
+	mov.f32 	%f37, 0f3f800000;    	// 1
+	mov.f32 	%f38, %f37;
+	mad.f32 %f39, %f34, %f36, %f38;
+	mov.f32 	%f40, %f39;
+	.loc	16	3873	0
+	mov.f32 	%f41, 0f3f800000;    	// 1
+	mov.f32 	%f42, 0f42b00000;    	// 88
+	setp.ge.f32 	%p3, %f3, %f42;
+	selp.f32 	%f43, %f41, %f40, %p3;
+	mov.b32 	%r5, %f43;
+	mov.b32 	%r6, %f2;
+	and.b32 	%r7, %r6, -2147483648;
+	or.b32 	%r8, %r5, %r7;
+	mov.b32 	%f44, %r8;
+	bra.uni 	$Lt_4_3842;
+$Lt_4_4098:
+	.loc	16	3138	0
+	mul.f32 	%f45, %f2, %f2;
+	mov.f32 	%f46, 0f3c86a81b;    	// 0.0164376
+	mov.f32 	%f47, %f46;
+	mov.f32 	%f48, %f45;
+	mov.f32 	%f49, 0fbd57be66;    	// -0.0526718
+	mov.f32 	%f50, %f49;
+	mad.f32 %f51, %f47, %f48, %f50;
+	mov.f32 	%f40, %f51;
+	mov.f32 	%f52, %f40;
+	mov.f32 	%f53, %f45;
+	mov.f32 	%f54, 0f3e08677b;    	// 0.133207
+	mov.f32 	%f55, %f54;
+	mad.f32 %f56, %f52, %f53, %f55;
+	mov.f32 	%f40, %f56;
+	mov.f32 	%f57, %f40;
+	mov.f32 	%f58, %f45;
+	mov.f32 	%f59, 0fbeaaaa29;    	// -0.333329
+	mov.f32 	%f60, %f59;
+	mad.f32 %f61, %f57, %f58, %f60;
+	mov.f32 	%f40, %f61;
+	mul.f32 	%f62, %f45, %f40;
+	mov.f32 	%f63, %f62;
+	mov.f32 	%f64, %f2;
+	mov.f32 	%f65, %f2;
+	mad.f32 %f66, %f63, %f64, %f65;
+	mov.f32 	%f40, %f66;
+	.loc	16	3876	0
+	add.f32 	%f67, %f2, %f2;
+	mov.f32 	%f68, 0f00000000;    	// 0
+	setp.eq.f32 	%p4, %f2, %f68;
+	selp.f32 	%f44, %f67, %f40, %p4;
+$Lt_4_3842:
+	.loc	14	48	0
+	cvt.f64.f32 	%fd5, %f44;
+	mov.f64 	%fd6, 0d3ffb74538ef34d6a;	// 1.7159
+	mul.f64 	%fd7, %fd5, %fd6;
+	cvt.rn.f32.f64 	%f69, %fd7;
+	ld.param.u64 	%rd5, [__cudaparm__Z19functionAdaptedTanHPKfPfi_B];
+	add.u64 	%rd6, %rd5, %rd2;
+	st.global.f32 	[%rd6+0], %f69;
+$Lt_4_3330:
+	.loc	14	49	0
+	exit;
+$LDWend__Z19functionAdaptedTanHPKfPfi:
+	} // _Z19functionAdaptedTanHPKfPfi
+
+	.entry _Z16functionLogisticPKfPfi (
+		.param .u64 __cudaparm__Z16functionLogisticPKfPfi_A,
+		.param .u64 __cudaparm__Z16functionLogisticPKfPfi_B,
+		.param .s32 __cudaparm__Z16functionLogisticPKfPfi_N)
+	{
+	.reg .u16 %rh<3>;
+	.reg .u32 %r<6>;
+	.reg .u64 %rd<8>;
+	.reg .f32 %f<31>;
+	.reg .f64 %fd<6>;
+	.reg .pred %p<5>;
+	.loc	14	51	0
+$LDWbegin__Z16functionLogisticPKfPfi:
+	cvt.u32.u16 	%r1, %tid.x;
+	mov.u16 	%rh1, %ctaid.x;
+	mul.wide.u16 	%r2, %rh1, 1024;
+	add.u32 	%r3, %r1, %r2;
+	ld.param.s32 	%r4, [__cudaparm__Z16functionLogisticPKfPfi_N];
+	setp.le.s32 	%p1, %r4, %r3;
+	@%p1 bra 	$Lt_5_2562;
+	.loc	14	54	0
+	cvt.s64.s32 	%rd1, %r3;
+	mul.wide.s32 	%rd2, %r3, 4;
+	ld.param.u64 	%rd3, [__cudaparm__Z16functionLogisticPKfPfi_A];
+	add.u64 	%rd4, %rd3, %rd2;
+	ld.global.f32 	%f1, [%rd4+0];
+	neg.f32 	%f2, %f1;
+	.loc	16	3138	0
+	mov.f32 	%f3, 0f3fb8aa3b;     	// 1.4427
+	mul.f32 	%f4, %f2, %f3;
+	cvt.rzi.f32.f32 	%f5, %f4;
+	mov.f32 	%f6, %f5;
+	mov.f32 	%f7, 0fbf317200;     	// -0.693146
+	mov.f32 	%f8, %f7;
+	mov.f32 	%f9, %f2;
+	mad.f32 %f10, %f6, %f8, %f9;
+	mov.f32 	%f11, %f10;
+	mov.f32 	%f12, %f5;
+	mov.f32 	%f13, 0fb5bfbe8e;    	// -1.42861e-06
+	mov.f32 	%f14, %f13;
+	mov.f32 	%f15, %f11;
+	mad.f32 %f16, %f12, %f14, %f15;
+	mov.f32 	%f17, %f16;
+	.loc	14	54	0
+	mov.f32 	%f18, 0f7f800000;    	// ((1.0F)/(0.0F))
+	mov.f32 	%f19, 0f00000000;    	// 0
+	ex2.approx.f32 	%f20, %f5;
+	mov.f32 	%f21, 0f3fb8aa3b;    	// 1.4427
+	mul.f32 	%f22, %f17, %f21;
+	ex2.approx.f32 	%f23, %f22;
+	mul.f32 	%f24, %f20, %f23;
+	mov.f32 	%f25, 0fc2d20000;    	// -105
+	setp.lt.f32 	%p2, %f2, %f25;
+	selp.f32 	%f26, %f19, %f24, %p2;
+	mov.f32 	%f27, 0f42d20000;    	// 105
+	setp.gt.f32 	%p3, %f2, %f27;
+	selp.f32 	%f28, %f18, %f26, %p3;
+	cvt.f64.f32 	%fd1, %f28;
+	mov.f64 	%fd2, 0d3ff0000000000000;	// 1
+	add.f64 	%fd3, %fd1, %fd2;
+	rcp.rn.f64 	%fd4, %fd3;
+	cvt.rn.f32.f64 	%f29, %fd4;
+	ld.param.u64 	%rd5, [__cudaparm__Z16functionLogisticPKfPfi_B];
+	add.u64 	%rd6, %rd5, %rd2;
+	st.global.f32 	[%rd6+0], %f29;
+$Lt_5_2562:
+	.loc	14	55	0
+	exit;
+$LDWend__Z16functionLogisticPKfPfi:
+	} // _Z16functionLogisticPKfPfi
+
+	.entry _Z20functionDAdaptedTanHPKfPfi (
+		.param .u64 __cudaparm__Z20functionDAdaptedTanHPKfPfi_A,
+		.param .u64 __cudaparm__Z20functionDAdaptedTanHPKfPfi_B,
+		.param .s32 __cudaparm__Z20functionDAdaptedTanHPKfPfi_N)
+	{
+	.reg .u16 %rh<3>;
+	.reg .u32 %r<10>;
+	.reg .u64 %rd<8>;
+	.reg .f32 %f<72>;
+	.reg .f64 %fd<11>;
+	.reg .pred %p<6>;
+	.loc	14	57	0
+$LDWbegin__Z20functionDAdaptedTanHPKfPfi:
+	.loc	14	61	0
+	cvt.u32.u16 	%r1, %tid.x;
+	mov.u16 	%rh1, %ctaid.x;
+	mul.wide.u16 	%r2, %rh1, 1024;
+	add.u32 	%r3, %r1, %r2;
+	cvt.s64.s32 	%rd1, %r3;
+	mul.wide.s32 	%rd2, %r3, 4;
+	ld.param.u64 	%rd3, [__cudaparm__Z20functionDAdaptedTanHPKfPfi_A];
+	add.u64 	%rd4, %rd3, %rd2;
+	ld.global.f32 	%f1, [%rd4+0];
+	cvt.f64.f32 	%fd1, %f1;
+	mov.f64 	%fd2, 0d3fe554c985f06f69;	// 0.6666
+	mul.f64 	%fd3, %fd1, %fd2;
+	.loc	27	253	0
+	abs.f64 	%fd4, %fd3;
+	cvt.rn.f32.f64 	%f2, %fd3;
+	cvt.rn.f32.f64 	%f3, %fd4;
+	mov.f32 	%f4, 0f3f0ccccd;     	// 0.55
+	setp.ge.f32 	%p1, %f3, %f4;
+	@!%p1 bra 	$Lt_6_3586;
+	.loc	16	3138	0
+	add.f32 	%f5, %f3, %f3;
+	mov.f32 	%f6, 0f3fb8aa3b;     	// 1.4427
+	mul.f32 	%f7, %f5, %f6;
+	cvt.rzi.f32.f32 	%f8, %f7;
+	mov.f32 	%f9, %f8;
+	mov.f32 	%f10, 0fbf317200;    	// -0.693146
+	mov.f32 	%f11, %f10;
+	mov.f32 	%f12, %f5;
+	mad.f32 %f13, %f9, %f11, %f12;
+	mov.f32 	%f14, %f13;
+	mov.f32 	%f15, %f8;
+	mov.f32 	%f16, 0fb5bfbe8e;    	// -1.42861e-06
+	mov.f32 	%f17, %f16;
+	mov.f32 	%f18, %f14;
+	mad.f32 %f19, %f15, %f17, %f18;
+	mov.f32 	%f20, %f19;
+	mov.f32 	%f21, 0f3fb8aa3b;    	// 1.4427
+	mul.f32 	%f22, %f20, %f21;
+	ex2.approx.f32 	%f23, %f22;
+	mov.f32 	%f24, %f23;
+	ex2.approx.f32 	%f25, %f8;
+	mov.f32 	%f26, %f25;
+	mov.f32 	%f27, 0f3f800000;    	// 1
+	mov.f32 	%f28, %f27;
+	mad.f32 %f29, %f24, %f26, %f28;
+	mov.f32 	%f30, %f29;
+	.loc	16	3146	0
+	mov.f32 	%f31, %f30;
+	rcp.approx.ftz.f32 %f32,%f31;
+	mov.f32 	%f33, %f32;
+	.loc	16	3138	0
+	mov.f32 	%f34, %f33;
+	mov.f32 	%f35, 0fc0000000;    	// -2
+	mov.f32 	%f36, %f35;
+	mov.f32 	%f37, 0f3f800000;    	// 1
+	mov.f32 	%f38, %f37;
+	mad.f32 %f39, %f34, %f36, %f38;
+	mov.f32 	%f40, %f39;
+	.loc	16	3873	0
+	mov.f32 	%f41, 0f3f800000;    	// 1
+	mov.f32 	%f42, 0f42b00000;    	// 88
+	setp.ge.f32 	%p2, %f3, %f42;
+	selp.f32 	%f43, %f41, %f40, %p2;
+	mov.b32 	%r4, %f43;
+	mov.b32 	%r5, %f2;
+	and.b32 	%r6, %r5, -2147483648;
+	or.b32 	%r7, %r4, %r6;
+	mov.b32 	%f44, %r7;
+	bra.uni 	$Lt_6_3330;
+$Lt_6_3586:
+	.loc	16	3138	0
+	mul.f32 	%f45, %f2, %f2;
+	mov.f32 	%f46, 0f3c86a81b;    	// 0.0164376
+	mov.f32 	%f47, %f46;
+	mov.f32 	%f48, %f45;
+	mov.f32 	%f49, 0fbd57be66;    	// -0.0526718
+	mov.f32 	%f50, %f49;
+	mad.f32 %f51, %f47, %f48, %f50;
+	mov.f32 	%f40, %f51;
+	mov.f32 	%f52, %f40;
+	mov.f32 	%f53, %f45;
+	mov.f32 	%f54, 0f3e08677b;    	// 0.133207
+	mov.f32 	%f55, %f54;
+	mad.f32 %f56, %f52, %f53, %f55;
+	mov.f32 	%f40, %f56;
+	mov.f32 	%f57, %f40;
+	mov.f32 	%f58, %f45;
+	mov.f32 	%f59, 0fbeaaaa29;    	// -0.333329
+	mov.f32 	%f60, %f59;
+	mad.f32 %f61, %f57, %f58, %f60;
+	mov.f32 	%f40, %f61;
+	mul.f32 	%f62, %f45, %f40;
+	mov.f32 	%f63, %f62;
+	mov.f32 	%f64, %f2;
+	mov.f32 	%f65, %f2;
+	mad.f32 %f66, %f63, %f64, %f65;
+	mov.f32 	%f40, %f66;
+	.loc	16	3876	0
+	add.f32 	%f67, %f2, %f2;
+	mov.f32 	%f68, 0f00000000;    	// 0
+	setp.eq.f32 	%p3, %f2, %f68;
+	selp.f32 	%f44, %f67, %f40, %p3;
+$Lt_6_3330:
+	.loc	14	61	0
+	ld.param.s32 	%r8, [__cudaparm__Z20functionDAdaptedTanHPKfPfi_N];
+	setp.le.s32 	%p4, %r8, %r3;
+	@%p4 bra 	$Lt_6_3842;
+	.loc	14	62	0
+	mov.f64 	%fd5, 0d3ff0000000000000;	// 1
+	mul.f32 	%f69, %f44, %f44;
+	cvt.f64.f32 	%fd6, %f69;
+	sub.f64 	%fd7, %fd5, %fd6;
+	mov.f64 	%fd8, 0d3ff24d810b3e88b8;	// 1.14392
+	mul.f64 	%fd9, %fd7, %fd8;
+	cvt.rn.f32.f64 	%f70, %fd9;
+	ld.param.u64 	%rd5, [__cudaparm__Z20functionDAdaptedTanHPKfPfi_B];
+	add.u64 	%rd6, %rd5, %rd2;
+	st.global.f32 	[%rd6+0], %f70;
+$Lt_6_3842:
+	.loc	14	63	0
+	exit;
+$LDWend__Z20functionDAdaptedTanHPKfPfi:
+	} // _Z20functionDAdaptedTanHPKfPfi
+
+	.entry _Z17functionDLogisticPKfPfi (
+		.param .u64 __cudaparm__Z17functionDLogisticPKfPfi_A,
+		.param .u64 __cudaparm__Z17functionDLogisticPKfPfi_B,
+		.param .s32 __cudaparm__Z17functionDLogisticPKfPfi_N)
+	{
+	.reg .u16 %rh<3>;
+	.reg .u32 %r<6>;
+	.reg .u64 %rd<8>;
+	.reg .f32 %f<32>;
+	.reg .f64 %fd<10>;
+	.reg .pred %p<5>;
+	.loc	14	65	0
+$LDWbegin__Z17functionDLogisticPKfPfi:
+	.loc	14	69	0
+	cvt.u32.u16 	%r1, %tid.x;
+	mov.u16 	%rh1, %ctaid.x;
+	mul.wide.u16 	%r2, %rh1, 1024;
+	add.u32 	%r3, %r1, %r2;
+	cvt.s64.s32 	%rd1, %r3;
+	mul.wide.s32 	%rd2, %r3, 4;
+	ld.param.u64 	%rd3, [__cudaparm__Z17functionDLogisticPKfPfi_A];
+	add.u64 	%rd4, %rd3, %rd2;
+	ld.global.f32 	%f1, [%rd4+0];
+	neg.f32 	%f2, %f1;
+	.loc	16	3138	0
+	mov.f32 	%f3, 0f3fb8aa3b;     	// 1.4427
+	mul.f32 	%f4, %f2, %f3;
+	cvt.rzi.f32.f32 	%f5, %f4;
+	mov.f32 	%f6, %f5;
+	mov.f32 	%f7, 0fbf317200;     	// -0.693146
+	mov.f32 	%f8, %f7;
+	mov.f32 	%f9, %f2;
+	mad.f32 %f10, %f6, %f8, %f9;
+	mov.f32 	%f11, %f10;
+	mov.f32 	%f12, %f5;
+	mov.f32 	%f13, 0fb5bfbe8e;    	// -1.42861e-06
+	mov.f32 	%f14, %f13;
+	mov.f32 	%f15, %f11;
+	mad.f32 %f16, %f12, %f14, %f15;
+	mov.f32 	%f17, %f16;
+	.loc	14	69	0
+	ld.param.s32 	%r4, [__cudaparm__Z17functionDLogisticPKfPfi_N];
+	setp.le.s32 	%p1, %r4, %r3;
+	@%p1 bra 	$Lt_7_2562;
+	.loc	14	70	0
+	mov.f32 	%f18, 0f42d20000;    	// 105
+	setp.gt.f32 	%p2, %f2, %f18;
+	mov.f32 	%f19, 0fc2d20000;    	// -105
+	setp.lt.f32 	%p3, %f2, %f19;
+	mov.f32 	%f20, 0f3fb8aa3b;    	// 1.4427
+	mul.f32 	%f21, %f17, %f20;
+	ex2.approx.f32 	%f22, %f21;
+	ex2.approx.f32 	%f23, %f5;
+	mul.f32 	%f24, %f22, %f23;
+	mov.f32 	%f25, 0f00000000;    	// 0
+	selp.f32 	%f26, %f25, %f24, %p3;
+	mov.f32 	%f27, 0f7f800000;    	// ((1.0F)/(0.0F))
+	selp.f32 	%f28, %f27, %f26, %p2;
+	cvt.f64.f32 	%fd1, %f28;
+	mov.f64 	%fd2, 0d3ff0000000000000;	// 1
+	add.f64 	%fd3, %fd1, %fd2;
+	rcp.rn.f64 	%fd4, %fd3;
+	cvt.rn.f32.f64 	%f29, %fd4;
+	cvt.f64.f32 	%fd5, %f29;
+	mov.f64 	%fd6, 0d3ff0000000000000;	// 1
+	sub.f64 	%fd7, %fd6, %fd5;
+	mul.f64 	%fd8, %fd5, %fd7;
+	cvt.rn.f32.f64 	%f30, %fd8;
+	ld.param.u64 	%rd5, [__cudaparm__Z17functionDLogisticPKfPfi_B];
+	add.u64 	%rd6, %rd5, %rd2;
+	st.global.f32 	[%rd6+0], %f30;
+$Lt_7_2562:
+	.loc	14	71	0
+	exit;
+$LDWend__Z17functionDLogisticPKfPfi:
+	} // _Z17functionDLogisticPKfPfi
+
+	.entry _Z12kerrorSquarePfPKfS1_S1_i (
+		.param .u64 __cudaparm__Z12kerrorSquarePfPKfS1_S1_i_A,
+		.param .u64 __cudaparm__Z12kerrorSquarePfPKfS1_S1_i_z,
+		.param .u64 __cudaparm__Z12kerrorSquarePfPKfS1_S1_i_x,
+		.param .u64 __cudaparm__Z12kerrorSquarePfPKfS1_S1_i_y,
+		.param .s32 __cudaparm__Z12kerrorSquarePfPKfS1_S1_i_N)
+	{
+	.reg .u16 %rh<3>;
+	.reg .u32 %r<6>;
+	.reg .u64 %rd<12>;
+	.reg .f32 %f<7>;
+	.reg .pred %p<3>;
+	.loc	14	73	0
+$LDWbegin__Z12kerrorSquarePfPKfS1_S1_i:
+	mov.u16 	%rh1, %ctaid.x;
+	mul.wide.u16 	%r1, %rh1, 1024;
+	cvt.u32.u16 	%r2, %tid.x;
+	add.u32 	%r3, %r2, %r1;
+	ld.param.s32 	%r4, [__cudaparm__Z12kerrorSquarePfPKfS1_S1_i_N];
+	setp.le.s32 	%p1, %r4, %r3;
+	@%p1 bra 	$Lt_8_1026;
+	.loc	14	76	0
+	cvt.s64.s32 	%rd1, %r3;
+	mul.wide.s32 	%rd2, %r3, 4;
+	ld.param.u64 	%rd3, [__cudaparm__Z12kerrorSquarePfPKfS1_S1_i_z];
+	add.u64 	%rd4, %rd3, %rd2;
+	ld.global.f32 	%f1, [%rd4+0];
+	ld.param.u64 	%rd5, [__cudaparm__Z12kerrorSquarePfPKfS1_S1_i_x];
+	add.u64 	%rd6, %rd5, %rd2;
+	ld.global.f32 	%f2, [%rd6+0];
+	ld.param.u64 	%rd7, [__cudaparm__Z12kerrorSquarePfPKfS1_S1_i_y];
+	add.u64 	%rd8, %rd7, %rd2;
+	ld.global.f32 	%f3, [%rd8+0];
+	sub.f32 	%f4, %f2, %f3;
+	mul.f32 	%f5, %f1, %f4;
+	ld.param.u64 	%rd9, [__cudaparm__Z12kerrorSquarePfPKfS1_S1_i_A];
+	add.u64 	%rd10, %rd9, %rd2;
+	st.global.f32 	[%rd10+0], %f5;
+$Lt_8_1026:
+	.loc	14	77	0
+	exit;
+$LDWend__Z12kerrorSquarePfPKfS1_S1_i:
+	} // _Z12kerrorSquarePfPKfS1_S1_i
+
+	.entry _Z17functionHingeLossPKfPfi (
+		.param .u64 __cudaparm__Z17functionHingeLossPKfPfi_A,
+		.param .u64 __cudaparm__Z17functionHingeLossPKfPfi_B,
+		.param .s32 __cudaparm__Z17functionHingeLossPKfPfi_N)
+	{
+	.reg .u16 %rh<3>;
+	.reg .u32 %r<5>;
+	.reg .u64 %rd<8>;
+	.reg .f32 %f<10>;
+	.reg .pred %p<3>;
+	.loc	14	80	0
+$LDWbegin__Z17functionHingeLossPKfPfi:
+	.loc	14	83	0
+	cvt.u32.u16 	%r1, %tid.x;
+	mov.u16 	%rh1, %ctaid.x;
+	mul.wide.u16 	%r2, %rh1, 1024;
+	add.u32 	%r3, %r1, %r2;
+	cvt.s64.s32 	%rd1, %r3;
+	mul.wide.s32 	%rd2, %r3, 4;
+	ld.param.u64 	%rd3, [__cudaparm__Z17functionHingeLossPKfPfi_B];
+	add.u64 	%rd4, %rd3, %rd2;
+	ld.global.f32 	%f1, [%rd4+0];
+	ld.param.u64 	%rd5, [__cudaparm__Z17functionHingeLossPKfPfi_A];
+	add.u64 	%rd6, %rd5, %rd2;
+	ld.global.f32 	%f2, [%rd6+0];
+	mul.f32 	%f3, %f1, %f2;
+	.loc	14	80	0
+	mov.f32 	%f4, 0f3f800000;     	// 1
+	sub.f32 	%f5, %f4, %f3;
+	mov.f32 	%f6, 0f00000000;     	// 0
+	mov.f32 	%f7, 0f3f800000;     	// 1
+	setp.lt.f32 	%p1, %f3, %f7;
+	selp.f32 	%f8, %f5, %f6, %p1;
+	st.global.f32 	[%rd4+0], %f8;
+	.loc	14	85	0
+	exit;
+$LDWend__Z17functionHingeLossPKfPfi:
+	} // _Z17functionHingeLossPKfPfi
+
+	.entry _Z26kmultiplicationTermeATermePfPKfi (
+		.param .u64 __cudaparm__Z26kmultiplicationTermeATermePfPKfi_A,
+		.param .u64 __cudaparm__Z26kmultiplicationTermeATermePfPKfi_B,
+		.param .s32 __cudaparm__Z26kmultiplicationTermeATermePfPKfi_N)
+	{
+	.reg .u16 %rh<3>;
+	.reg .u32 %r<6>;
+	.reg .u64 %rd<8>;
+	.reg .f32 %f<5>;
+	.reg .pred %p<3>;
+	.loc	14	154	0
+$LDWbegin__Z26kmultiplicationTermeATermePfPKfi:
+	mov.u16 	%rh1, %ctaid.x;
+	mul.wide.u16 	%r1, %rh1, 1024;
+	cvt.u32.u16 	%r2, %tid.x;
+	add.u32 	%r3, %r2, %r1;
+	ld.param.s32 	%r4, [__cudaparm__Z26kmultiplicationTermeATermePfPKfi_N];
+	setp.le.s32 	%p1, %r4, %r3;
+	@%p1 bra 	$Lt_10_1026;
+	.loc	14	157	0
+	cvt.s64.s32 	%rd1, %r3;
+	mul.wide.s32 	%rd2, %r3, 4;
+	ld.param.u64 	%rd3, [__cudaparm__Z26kmultiplicationTermeATermePfPKfi_A];
+	add.u64 	%rd4, %rd3, %rd2;
+	ld.global.f32 	%f1, [%rd4+0];
+	ld.param.u64 	%rd5, [__cudaparm__Z26kmultiplicationTermeATermePfPKfi_B];
+	add.u64 	%rd6, %rd5, %rd2;
+	ld.global.f32 	%f2, [%rd6+0];
+	mul.f32 	%f3, %f1, %f2;
+	st.global.f32 	[%rd4+0], %f3;
+$Lt_10_1026:
+	.loc	14	158	0
+	exit;
+$LDWend__Z26kmultiplicationTermeATermePfPKfi:
+	} // _Z26kmultiplicationTermeATermePfPKfi
+
+	.entry _Z12k_squareLossPfPKfS1_i (
+		.param .u64 __cudaparm__Z12k_squareLossPfPKfS1_i_dest,
+		.param .u64 __cudaparm__Z12k_squareLossPfPKfS1_i_A,
+		.param .u64 __cudaparm__Z12k_squareLossPfPKfS1_i_B,
+		.param .s32 __cudaparm__Z12k_squareLossPfPKfS1_i_N)
+	{
+	.reg .u16 %rh<3>;
+	.reg .u32 %r<6>;
+	.reg .u64 %rd<10>;
+	.reg .f32 %f<6>;
+	.reg .pred %p<3>;
+	.loc	14	166	0
+$LDWbegin__Z12k_squareLossPfPKfS1_i:
+	mov.u16 	%rh1, %ctaid.x;
+	mul.wide.u16 	%r1, %rh1, 1024;
+	cvt.u32.u16 	%r2, %tid.x;
+	add.u32 	%r3, %r2, %r1;
+	ld.param.s32 	%r4, [__cudaparm__Z12k_squareLossPfPKfS1_i_N];
+	setp.le.s32 	%p1, %r4, %r3;
+	@%p1 bra 	$Lt_11_1026;
+	.loc	14	169	0
+	cvt.s64.s32 	%rd1, %r3;
+	mul.wide.s32 	%rd2, %r3, 4;
+	ld.param.u64 	%rd3, [__cudaparm__Z12k_squareLossPfPKfS1_i_A];
+	add.u64 	%rd4, %rd3, %rd2;
+	ld.param.u64 	%rd5, [__cudaparm__Z12k_squareLossPfPKfS1_i_B];
+	add.u64 	%rd6, %rd5, %rd2;
+	ld.global.f32 	%f1, [%rd4+0];
+	ld.global.f32 	%f2, [%rd6+0];
+	sub.f32 	%f3, %f1, %f2;
+	mul.f32 	%f4, %f3, %f3;
+	ld.param.u64 	%rd7, [__cudaparm__Z12k_squareLossPfPKfS1_i_dest];
+	add.u64 	%rd8, %rd7, %rd2;
+	st.global.f32 	[%rd8+0], %f4;
+$Lt_11_1026:
+	.loc	14	170	0
+	exit;
+$LDWend__Z12k_squareLossPfPKfS1_i:
+	} // _Z12k_squareLossPfPKfS1_i
+
+	.entry _Z11k_hingelossPfPKfS1_i (
+		.param .u64 __cudaparm__Z11k_hingelossPfPKfS1_i_dest,
+		.param .u64 __cudaparm__Z11k_hingelossPfPKfS1_i_A,
+		.param .u64 __cudaparm__Z11k_hingelossPfPKfS1_i_B,
+		.param .s32 __cudaparm__Z11k_hingelossPfPKfS1_i_N)
+	{
+	.reg .u16 %rh<3>;
+	.reg .u32 %r<6>;
+	.reg .u64 %rd<10>;
+	.reg .f32 %f<10>;
+	.reg .pred %p<4>;
+	.loc	14	172	0
+$LDWbegin__Z11k_hingelossPfPKfS1_i:
+	mov.u16 	%rh1, %ctaid.x;
+	mul.wide.u16 	%r1, %rh1, 1024;
+	cvt.u32.u16 	%r2, %tid.x;
+	add.u32 	%r3, %r2, %r1;
+	ld.param.s32 	%r4, [__cudaparm__Z11k_hingelossPfPKfS1_i_N];
+	setp.le.s32 	%p1, %r4, %r3;
+	@%p1 bra 	$Lt_12_1794;
+	.loc	14	177	0
+	cvt.s64.s32 	%rd1, %r3;
+	mul.wide.s32 	%rd2, %r3, 4;
+	ld.param.u64 	%rd3, [__cudaparm__Z11k_hingelossPfPKfS1_i_A];
+	add.u64 	%rd4, %rd3, %rd2;
+	ld.param.u64 	%rd5, [__cudaparm__Z11k_hingelossPfPKfS1_i_B];
+	add.u64 	%rd6, %rd5, %rd2;
+	ld.global.f32 	%f1, [%rd4+0];
+	ld.global.f32 	%f2, [%rd6+0];
+	mul.f32 	%f3, %f1, %f2;
+	mov.f32 	%f4, 0f3f800000;     	// 1
+	sub.f32 	%f5, %f4, %f3;
+	mov.f32 	%f6, 0f00000000;     	// 0
+	mov.f32 	%f7, 0f3f800000;     	// 1
+	setp.lt.f32 	%p2, %f3, %f7;
+	selp.f32 	%f8, %f5, %f6, %p2;
+	ld.param.u64 	%rd7, [__cudaparm__Z11k_hingelossPfPKfS1_i_dest];
+	add.u64 	%rd8, %rd7, %rd2;
+	st.global.f32 	[%rd8+0], %f8;
+$Lt_12_1794:
+	.loc	14	181	0
+	exit;
+$LDWend__Z11k_hingelossPfPKfS1_i:
+	} // _Z11k_hingelossPfPKfS1_i
+
+	.entry _Z6k_fillPffi (
+		.param .u64 __cudaparm__Z6k_fillPffi_dest,
+		.param .f32 __cudaparm__Z6k_fillPffi_v,
+		.param .s32 __cudaparm__Z6k_fillPffi_N)
+	{
+	.reg .u16 %rh<3>;
+	.reg .u32 %r<6>;
+	.reg .u64 %rd<6>;
+	.reg .f32 %f<3>;
+	.reg .pred %p<3>;
+	.loc	14	195	0
+$LDWbegin__Z6k_fillPffi:
+	mov.u16 	%rh1, %ctaid.x;
+	mul.wide.u16 	%r1, %rh1, 1024;
+	cvt.u32.u16 	%r2, %tid.x;
+	add.u32 	%r3, %r2, %r1;
+	ld.param.s32 	%r4, [__cudaparm__Z6k_fillPffi_N];
+	setp.le.s32 	%p1, %r4, %r3;
+	@%p1 bra 	$Lt_13_1026;
+	.loc	14	198	0
+	ld.param.f32 	%f1, [__cudaparm__Z6k_fillPffi_v];
+	ld.param.u64 	%rd1, [__cudaparm__Z6k_fillPffi_dest];
+	cvt.s64.s32 	%rd2, %r3;
+	mul.wide.s32 	%rd3, %r3, 4;
+	add.u64 	%rd4, %rd1, %rd3;
+	st.global.f32 	[%rd4+0], %f1;
+$Lt_13_1026:
+	.loc	14	199	0
+	exit;
+$LDWend__Z6k_fillPffi:
+	} // _Z6k_fillPffi
+
+	.entry _Z12k_dhingelossPfPKfS1_i (
+		.param .u64 __cudaparm__Z12k_dhingelossPfPKfS1_i_dest,
+		.param .u64 __cudaparm__Z12k_dhingelossPfPKfS1_i_A,
+		.param .u64 __cudaparm__Z12k_dhingelossPfPKfS1_i_B,
+		.param .s32 __cudaparm__Z12k_dhingelossPfPKfS1_i_N)
+	{
+	.reg .u16 %rh<3>;
+	.reg .u32 %r<6>;
+	.reg .u64 %rd<10>;
+	.reg .f32 %f<8>;
+	.reg .pred %p<4>;
+	.loc	14	201	0
+$LDWbegin__Z12k_dhingelossPfPKfS1_i:
+	mov.u16 	%rh1, %ctaid.x;
+	mul.wide.u16 	%r1, %rh1, 1024;
+	cvt.u32.u16 	%r2, %tid.x;
+	add.u32 	%r3, %r2, %r1;
+	ld.param.s32 	%r4, [__cudaparm__Z12k_dhingelossPfPKfS1_i_N];
+	setp.le.s32 	%p1, %r4, %r3;
+	@%p1 bra 	$Lt_14_1794;
+	cvt.s64.s32 	%rd1, %r3;
+	mul.wide.s32 	%rd2, %r3, 4;
+	ld.param.u64 	%rd3, [__cudaparm__Z12k_dhingelossPfPKfS1_i_B];
+	add.u64 	%rd4, %rd3, %rd2;
+	ld.param.u64 	%rd5, [__cudaparm__Z12k_dhingelossPfPKfS1_i_dest];
+	add.u64 	%rd6, %rd5, %rd2;
+	ld.global.f32 	%f1, [%rd4+0];
+	ld.param.u64 	%rd7, [__cudaparm__Z12k_dhingelossPfPKfS1_i_A];
+	add.u64 	%rd8, %rd7, %rd2;
+	ld.global.f32 	%f2, [%rd8+0];
+	mul.f32 	%f3, %f2, %f1;
+	mov.f32 	%f4, 0f3f800000;     	// 1
+	setp.lt.f32 	%p2, %f3, %f4;
+	@!%p2 bra 	$Lt_14_2562;
+	.loc	14	205	0
+	neg.f32 	%f5, %f1;
+	st.global.f32 	[%rd6+0], %f5;
+	bra.uni 	$Lt_14_2306;
+$Lt_14_2562:
+	mov.f32 	%f6, 0f00000000;     	// 0
+	st.global.f32 	[%rd6+0], %f6;
+$Lt_14_2306:
+$Lt_14_1794:
+	.loc	14	207	0
+	exit;
+$LDWend__Z12k_dhingelossPfPKfS1_i:
+	} // _Z12k_dhingelossPfPKfS1_i
+
+	.entry _Z12k_differencePfPKfS1_i (
+		.param .u64 __cudaparm__Z12k_differencePfPKfS1_i_dest,
+		.param .u64 __cudaparm__Z12k_differencePfPKfS1_i_A,
+		.param .u64 __cudaparm__Z12k_differencePfPKfS1_i_B,
+		.param .s32 __cudaparm__Z12k_differencePfPKfS1_i_N)
+	{
+	.reg .u16 %rh<3>;
+	.reg .u32 %r<6>;
+	.reg .u64 %rd<10>;
+	.reg .f32 %f<5>;
+	.reg .pred %p<3>;
+	.loc	14	211	0
+$LDWbegin__Z12k_differencePfPKfS1_i:
+	mov.u16 	%rh1, %ctaid.x;
+	mul.wide.u16 	%r1, %rh1, 1024;
+	cvt.u32.u16 	%r2, %tid.x;
+	add.u32 	%r3, %r2, %r1;
+	ld.param.s32 	%r4, [__cudaparm__Z12k_differencePfPKfS1_i_N];
+	setp.le.s32 	%p1, %r4, %r3;
+	@%p1 bra 	$Lt_15_1026;
+	.loc	14	214	0
+	cvt.s64.s32 	%rd1, %r3;
+	mul.wide.s32 	%rd2, %r3, 4;
+	ld.param.u64 	%rd3, [__cudaparm__Z12k_differencePfPKfS1_i_A];
+	add.u64 	%rd4, %rd3, %rd2;
+	ld.global.f32 	%f1, [%rd4+0];
+	ld.param.u64 	%rd5, [__cudaparm__Z12k_differencePfPKfS1_i_B];
+	add.u64 	%rd6, %rd5, %rd2;
+	ld.global.f32 	%f2, [%rd6+0];
+	sub.f32 	%f3, %f1, %f2;
+	ld.param.u64 	%rd7, [__cudaparm__Z12k_differencePfPKfS1_i_dest];
+	add.u64 	%rd8, %rd7, %rd2;
+	st.global.f32 	[%rd8+0], %f3;
+$Lt_15_1026:
+	.loc	14	215	0
+	exit;
+$LDWend__Z12k_differencePfPKfS1_i:
+	} // _Z12k_differencePfPKfS1_i
+
+	.entry _Z10k_additionPfPKfS1_i (
+		.param .u64 __cudaparm__Z10k_additionPfPKfS1_i_dest,
+		.param .u64 __cudaparm__Z10k_additionPfPKfS1_i_A,
+		.param .u64 __cudaparm__Z10k_additionPfPKfS1_i_B,
+		.param .s32 __cudaparm__Z10k_additionPfPKfS1_i_N)
+	{
+	.reg .u16 %rh<3>;
+	.reg .u32 %r<6>;
+	.reg .u64 %rd<10>;
+	.reg .f32 %f<5>;
+	.reg .pred %p<3>;
+	.loc	14	230	0
+$LDWbegin__Z10k_additionPfPKfS1_i:
+	mov.u16 	%rh1, %ctaid.x;
+	mul.wide.u16 	%r1, %rh1, 1024;
+	cvt.u32.u16 	%r2, %tid.x;
+	add.u32 	%r3, %r2, %r1;
+	ld.param.s32 	%r4, [__cudaparm__Z10k_additionPfPKfS1_i_N];
+	setp.le.s32 	%p1, %r4, %r3;
+	@%p1 bra 	$Lt_16_1026;
+	.loc	14	233	0
+	cvt.s64.s32 	%rd1, %r3;
+	mul.wide.s32 	%rd2, %r3, 4;
+	ld.param.u64 	%rd3, [__cudaparm__Z10k_additionPfPKfS1_i_A];
+	add.u64 	%rd4, %rd3, %rd2;
+	ld.global.f32 	%f1, [%rd4+0];
+	ld.param.u64 	%rd5, [__cudaparm__Z10k_additionPfPKfS1_i_B];
+	add.u64 	%rd6, %rd5, %rd2;
+	ld.global.f32 	%f2, [%rd6+0];
+	add.f32 	%f3, %f1, %f2;
+	ld.param.u64 	%rd7, [__cudaparm__Z10k_additionPfPKfS1_i_dest];
+	add.u64 	%rd8, %rd7, %rd2;
+	st.global.f32 	[%rd8+0], %f3;
+$Lt_16_1026:
+	.loc	14	234	0
+	exit;
+$LDWend__Z10k_additionPfPKfS1_i:
+	} // _Z10k_additionPfPKfS1_i
+
+	.entry _Z10k_negativePfPKfi (
+		.param .u64 __cudaparm__Z10k_negativePfPKfi_dest,
+		.param .u64 __cudaparm__Z10k_negativePfPKfi_A,
+		.param .s32 __cudaparm__Z10k_negativePfPKfi_N)
+	{
+	.reg .u16 %rh<3>;
+	.reg .u32 %r<6>;
+	.reg .u64 %rd<8>;
+	.reg .f32 %f<4>;
+	.reg .pred %p<3>;
+	.loc	14	242	0
+$LDWbegin__Z10k_negativePfPKfi:
+	mov.u16 	%rh1, %ctaid.x;
+	mul.wide.u16 	%r1, %rh1, 1024;
+	cvt.u32.u16 	%r2, %tid.x;
+	add.u32 	%r3, %r2, %r1;
+	ld.param.s32 	%r4, [__cudaparm__Z10k_negativePfPKfi_N];
+	setp.le.s32 	%p1, %r4, %r3;
+	@%p1 bra 	$Lt_17_1026;
+	.loc	14	245	0
+	cvt.s64.s32 	%rd1, %r3;
+	mul.wide.s32 	%rd2, %r3, 4;
+	ld.param.u64 	%rd3, [__cudaparm__Z10k_negativePfPKfi_A];
+	add.u64 	%rd4, %rd3, %rd2;
+	ld.global.f32 	%f1, [%rd4+0];
+	neg.f32 	%f2, %f1;
+	ld.param.u64 	%rd5, [__cudaparm__Z10k_negativePfPKfi_dest];
+	add.u64 	%rd6, %rd5, %rd2;
+	st.global.f32 	[%rd6+0], %f2;
+$Lt_17_1026:
+	.loc	14	246	0
+	exit;
+$LDWend__Z10k_negativePfPKfi:
+	} // _Z10k_negativePfPKfi
+
+	.entry _Z8k_squarePfPKfi (
+		.param .u64 __cudaparm__Z8k_squarePfPKfi_dest,
+		.param .u64 __cudaparm__Z8k_squarePfPKfi_A,
+		.param .s32 __cudaparm__Z8k_squarePfPKfi_N)
+	{
+	.reg .u16 %rh<3>;
+	.reg .u32 %r<6>;
+	.reg .u64 %rd<8>;
+	.reg .f32 %f<4>;
+	.reg .pred %p<3>;
+	.loc	14	262	0
+$LDWbegin__Z8k_squarePfPKfi:
+	mov.u16 	%rh1, %ctaid.x;
+	mul.wide.u16 	%r1, %rh1, 1024;
+	cvt.u32.u16 	%r2, %tid.x;
+	add.u32 	%r3, %r2, %r1;
+	ld.param.s32 	%r4, [__cudaparm__Z8k_squarePfPKfi_N];
+	setp.le.s32 	%p1, %r4, %r3;
+	@%p1 bra 	$Lt_18_1026;
+	.loc	14	265	0
+	cvt.s64.s32 	%rd1, %r3;
+	mul.wide.s32 	%rd2, %r3, 4;
+	ld.param.u64 	%rd3, [__cudaparm__Z8k_squarePfPKfi_A];
+	add.u64 	%rd4, %rd3, %rd2;
+	ld.global.f32 	%f1, [%rd4+0];
+	mul.f32 	%f2, %f1, %f1;
+	ld.param.u64 	%rd5, [__cudaparm__Z8k_squarePfPKfi_dest];
+	add.u64 	%rd6, %rd5, %rd2;
+	st.global.f32 	[%rd6+0], %f2;
+$Lt_18_1026:
+	.loc	14	266	0
+	exit;
+$LDWend__Z8k_squarePfPKfi:
+	} // _Z8k_squarePfPKfi
+
+	.entry _Z14k_l2norm_deltaPfPKfS1_ii (
+		.param .u64 __cudaparm__Z14k_l2norm_deltaPfPKfS1_ii_dest,
+		.param .u64 __cudaparm__Z14k_l2norm_deltaPfPKfS1_ii_A,
+		.param .u64 __cudaparm__Z14k_l2norm_deltaPfPKfS1_ii_B,
+		.param .s32 __cudaparm__Z14k_l2norm_deltaPfPKfS1_ii_nbexamples,
+		.param .s32 __cudaparm__Z14k_l2norm_deltaPfPKfS1_ii_sizeexamples)
+	{
+	.reg .u16 %rh<3>;
+	.reg .u32 %r<9>;
+	.reg .u64 %rd<12>;
+	.reg .f32 %f<5>;
+	.reg .pred %p<3>;
+	.loc	14	274	0
+$LDWbegin__Z14k_l2norm_deltaPfPKfS1_ii:
+	mov.u16 	%rh1, %ctaid.x;
+	mul.wide.u16 	%r1, %rh1, 1024;
+	cvt.u32.u16 	%r2, %tid.x;
+	add.u32 	%r3, %r2, %r1;
+	ld.param.s32 	%r4, [__cudaparm__Z14k_l2norm_deltaPfPKfS1_ii_nbexamples];
+	ld.param.s32 	%r5, [__cudaparm__Z14k_l2norm_deltaPfPKfS1_ii_sizeexamples];
+	mul.lo.s32 	%r6, %r5, %r4;
+	setp.ge.s32 	%p1, %r3, %r6;
+	@%p1 bra 	$Lt_19_1026;
+	.loc	14	279	0
+	cvt.s64.s32 	%rd1, %r3;
+	mul.wide.s32 	%rd2, %r3, 4;
+	ld.param.u64 	%rd3, [__cudaparm__Z14k_l2norm_deltaPfPKfS1_ii_A];
+	.loc	14	274	0
+	ld.param.s32 	%r4, [__cudaparm__Z14k_l2norm_deltaPfPKfS1_ii_nbexamples];
+	.loc	14	279	0
+	rem.s32 	%r7, %r3, %r4;
+	cvt.s64.s32 	%rd4, %r7;
+	mul.wide.s32 	%rd5, %r7, 4;
+	add.u64 	%rd6, %rd3, %rd5;
+	ld.global.f32 	%f1, [%rd6+0];
+	ld.param.u64 	%rd7, [__cudaparm__Z14k_l2norm_deltaPfPKfS1_ii_B];
+	add.u64 	%rd8, %rd7, %rd2;
+	ld.global.f32 	%f2, [%rd8+0];
+	mul.f32 	%f3, %f1, %f2;
+	ld.param.u64 	%rd9, [__cudaparm__Z14k_l2norm_deltaPfPKfS1_ii_dest];
+	add.u64 	%rd10, %rd9, %rd2;
+	st.global.f32 	[%rd10+0], %f3;
+$Lt_19_1026:
+	.loc	14	281	0
+	exit;
+$LDWend__Z14k_l2norm_deltaPfPKfS1_ii:
+	} // _Z14k_l2norm_deltaPfPKfS1_ii
+
+	.entry _Z16k_sum_parexemplePfPKfii (
+		.param .u64 __cudaparm__Z16k_sum_parexemplePfPKfii_dest,
+		.param .u64 __cudaparm__Z16k_sum_parexemplePfPKfii_A,
+		.param .s32 __cudaparm__Z16k_sum_parexemplePfPKfii_nbexamples,
+		.param .s32 __cudaparm__Z16k_sum_parexemplePfPKfii_sizeexamples)
+	{
+	.reg .u16 %rh<3>;
+	.reg .u32 %r<9>;
+	.reg .u64 %rd<10>;
+	.reg .f32 %f<5>;
+	.reg .pred %p<3>;
+	.loc	14	289	0
+$LDWbegin__Z16k_sum_parexemplePfPKfii:
+	mov.u16 	%rh1, %ctaid.x;
+	mul.wide.u16 	%r1, %rh1, 1024;
+	cvt.u32.u16 	%r2, %tid.x;
+	add.u32 	%r3, %r2, %r1;
+	ld.param.s32 	%r4, [__cudaparm__Z16k_sum_parexemplePfPKfii_nbexamples];
+	ld.param.s32 	%r5, [__cudaparm__Z16k_sum_parexemplePfPKfii_sizeexamples];
+	mul.lo.s32 	%r6, %r5, %r4;
+	setp.ge.s32 	%p1, %r3, %r6;
+	@%p1 bra 	$Lt_20_1026;
+	.loc	14	294	0
+	ld.param.u64 	%rd1, [__cudaparm__Z16k_sum_parexemplePfPKfii_dest];
+	.loc	14	289	0
+	ld.param.s32 	%r4, [__cudaparm__Z16k_sum_parexemplePfPKfii_nbexamples];
+	.loc	14	294	0
+	rem.s32 	%r7, %r3, %r4;
+	cvt.s64.s32 	%rd2, %r7;
+	mul.wide.s32 	%rd3, %r7, 4;
+	add.u64 	%rd4, %rd1, %rd3;
+	ld.global.f32 	%f1, [%rd4+0];
+	ld.param.u64 	%rd5, [__cudaparm__Z16k_sum_parexemplePfPKfii_A];
+	cvt.s64.s32 	%rd6, %r3;
+	mul.wide.s32 	%rd7, %r3, 4;
+	add.u64 	%rd8, %rd5, %rd7;
+	ld.global.f32 	%f2, [%rd8+0];
+	add.f32 	%f3, %f1, %f2;
+	st.global.f32 	[%rd4+0], %f3;
+$Lt_20_1026:
+	.loc	14	296	0
+	exit;
+$LDWend__Z16k_sum_parexemplePfPKfii:
+	} // _Z16k_sum_parexemplePfPKfii
+

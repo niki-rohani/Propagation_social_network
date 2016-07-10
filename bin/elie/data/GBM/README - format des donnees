@@ -1,0 +1,14 @@
+format des données :
+
+Separateur ":"
+
+users : le dictionnaire des visiteurs (numéro associé à chaque id)
+
+v_items : le dictionnaire des items de type vidéo 
+m_items : le dictionnaire des items de type audio 
+
+v_data : les données de type vidéo, écrites sous la forme suivante user:item:#likes:salle:durée:timestamp  // les salles sont décrites par leur nom
+m_data : les données de type  audio user:item:like(binaire):salle:timestamp     // les salles sont décrites par leur nom
+
+m_salles : la salle associée à chaque item de type musique     // Les salles sont numérotées de 1 à 6
+v_salles : la salle associée à chaque item de type video   // Les salles sont numérotées de 1 à 6
